@@ -1,0 +1,12 @@
+<h2>Edit Post</h2>
+
+<h3>Update Post Title</h3>
+{{input type="text" value=title placeholder=this.title}}
+
+<h3>Update Post Body</h3>
+{{textarea value=body cols="80" rows="20" placeholder=this.body}}
+
+<br/>
+<button {{action "update" this}}>Update</button>
+<button {{action "cancel" this}}>Cancel</button>
+
