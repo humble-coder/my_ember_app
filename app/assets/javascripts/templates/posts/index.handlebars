@@ -1,0 +1,11 @@
+<ul>
+  {{#each controller}}
+    <li>{{#link-to "post" this}}{{title}}{{/link-to}}</li>
+  {{else}}
+    There are no posts.
+  {{/each}}
+</ul>
+
+{{#link-to "posts.new"}}Create a Post{{/link-to}}
+
+{{outlet}}
