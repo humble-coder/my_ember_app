@@ -42,6 +42,8 @@ class PostsController < ApplicationController
   private
 
   def post_params
-  	params.require(:post).permit(:title, :body)
+    pp = params.require(:post).permit(:title, :body, :id, :comments)
+    pp[:comments] = [] unless pp[:comments]
+    pp
   end
 end
