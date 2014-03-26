@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def update
   	post = Post.find(params[:id])
 
-  	if post.update_attributes(post_params)
+  	if post.update(post_params)
   		render json: post, status: :ok
   	else
   		render json: { errors: post.errors.messages }, status: 422
@@ -42,8 +42,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    pp = params.require(:post).permit(:title, :body, :id, :comments)
-    pp[:comments] = [] unless pp[:comments]
-    pp
+    params.require(:post).permit(:title, :body, :id, comments: [:body, :post_id])
   end
 end

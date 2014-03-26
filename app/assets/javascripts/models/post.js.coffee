@@ -3,9 +3,3 @@ App.Post = DS.Model.extend(
   body: DS.attr("string")
   comments: DS.hasMany("comment", async: true)
 )
-
-App.PostSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin,
-  attrs:
-    comments:
-      embedded: "always"
-)
