@@ -3,7 +3,7 @@ module "User votes on post",
     App.reset()
     return
 
-test "successfully (up vote)", ->
+test "successfully (up vote and then down vote)", ->
   visit("/").then ->
     click "#view-posts"
     andThen ->
@@ -17,18 +17,9 @@ test "successfully (up vote)", ->
           click "#up-vote"
           andThen ->
             ok exists("span:contains('1')"), "Post view has updated vote count for up vote."
-            return
-
-test "successfully (down vote)", ->
-  visit("/").then ->
-    click "#view-posts"
-    andThen ->
-      click "a:contains('Some Post')"
-      andThen ->
-        ok exists("#down-vote"), 'Post view has down-vote button displayed.'
-        click "#down-vote"
-        andThen ->
-          click "#down-vote"
-          andThen ->
-            ok exists("span:contains('-2')"), "Post view has updated vote count for down vote."
-            return
+            andThen ->
+              ok exists("#down-vote"), 'Post view has down-vote button displayed.'
+              click "#down-vote"
+              andThen ->
+                ok exists("span:contains('0')"), "Post view has updated vote count for down vote."
+                return
