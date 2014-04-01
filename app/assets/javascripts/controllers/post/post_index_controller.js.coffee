@@ -15,4 +15,16 @@ App.PostIndexController = Ember.ObjectController.extend(actions:
 	addComment: () ->
 	  @transitionToRoute "comments.new"
 	  return
+
+	upVote: (post) ->
+	  voteCount = post.incrementProperty 'votes'
+	  post.set "votes", voteCount
+	  post.save()
+	  return
+
+  downVote: (post) ->
+    voteCount = post.decrementProperty 'votes'
+    post.set "votes", voteCount
+    post.save()
+    return
 )
