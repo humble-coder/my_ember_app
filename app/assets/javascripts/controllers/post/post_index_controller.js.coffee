@@ -17,12 +17,12 @@ App.PostIndexController = Ember.ObjectController.extend(actions:
 	  return
 
 	upVote: (post) ->
-	  post.incrementProperty 'votes'
+	  post.incrementProperty "votes"
 	  post.save()
 	  return
 
   downVote: (post) ->
-    post.decrementProperty 'votes'
+    post.decrementProperty "votes"
     post.save()
     return
 )

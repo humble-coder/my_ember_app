@@ -2,8 +2,7 @@ class PostsController < ApplicationController
 	respond_to :json
 
 	def index
-    posts = Post.all.order(votes: :desc)
-		render json: posts, each_serializer: PostSerializer
+		render json: Post.all, each_serializer: PostSerializer
 	end
 
 	def show
